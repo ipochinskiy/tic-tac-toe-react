@@ -1,0 +1,25 @@
+@import '../../colors.scss';
+
+.Game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__heading {
+        margin: 8px;
+        color: $neutral3-6;
+        font-size: 24px;
+        cursor: default;
+    }
+
+    &__button {
+        margin: 8px;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

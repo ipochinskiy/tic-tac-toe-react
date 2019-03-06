@@ -1,0 +1,88 @@
+@import '../../colors.scss';
+
+$header-height: 40px;
+
+.Setup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__heading {
+        margin: 8px;
+        color: $neutral3-6;
+        font-size: 24px;
+        cursor: default;
+    }
+
+    &__form {
+        min-width: 300px;
+        display: flex;
+        justify-content: space-evenly;
+        // align-items: center;
+        align-items: baseline;
+        flex-wrap: wrap;
+
+        color: $neutral3-6;
+        font-size: 16px;
+    }
+
+    &__tile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        border: 1px solid $primary3-d1;
+        border-radius: 8px;
+        background-color: $primary3;
+        margin: 8px;
+        padding: 8px;
+
+        &__heading {
+            cursor: default;
+        }
+
+        &__field {
+            width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+
+            color: $neutral3-6;
+            font-size: 16px;
+
+            & label {
+            }
+
+            & input {
+                outline: none;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                padding: 4px;
+                min-width: 40px;
+            }
+        }
+    }
+
+    &__button {
+        margin: 8px;
+
+        & button {
+            padding: 8px 24px;
+            font-size: 16px;
+            outline: none;
+            border-radius: 16px;
+            border: 1px solid $primary1-d1;
+            background-color: $primary1;
+            color: $neutral2;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary1-d1;
+            }
+        }
+    }
+}
