@@ -26,5 +26,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "http-proxy-middleware": "^0.19.1",
+    "jest-environment-enzyme": "^7.0.1",
+    "jest-enzyme": "^7.0.1",
+    "react-test-renderer": "^16.8.4"
+  }
 }
