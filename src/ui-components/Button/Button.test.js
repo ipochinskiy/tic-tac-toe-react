@@ -1,9 +1,17 @@
+import { shallow } from 'enzyme';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Button from './Button';
 
-it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Button />, div);
-    ReactDOM.unmountComponentAtNode(div);
+describe('Component: Button', () => {
+    it('should render button of the correct shape', () => {
+        const component = shallow(<Button shape='primary' />);
+
+        expect(component.find('button.Button--primary').first()).toBeTruthy();
+    });
+
+    it('should render children', () => {
+        const component = shallow(<Button shape='primary'>a tiny pretty button</Button>);
+
+        expect(component).toIncludeText('a tiny pretty button');
+    });
 });
