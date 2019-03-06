@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import Button from '../../ui-components/Button/Button';
 import { calculatePCTurn, tileSelected } from '../actions';
 import Board from '../Board/Board';
@@ -43,10 +43,11 @@ class Game extends Component {
     }
 
     render() {
-        const { tileList, gameState, config } = this.props;
+        const { tileList, gameState, config, history } = this.props;
 
         if (!tileList || !gameState || !config) {
-            return <Redirect push to='/setup' />;;
+            history.push('/setup');
+            return null;
         }
 
         const { boardSize } = config;
@@ -105,4 +106,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Game));
