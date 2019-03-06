@@ -57,9 +57,6 @@ class Game extends Component {
                 <div className='Game__heading'>{label}</div>
                 <Board boardSize={boardSize} tileList={tileList} tileClicked={this.tileClicked}/>
                 <div className='Game__buttons'>
-                    {/* <div className='Game__button'>
-                        <Button shape='primary'>Reset</Button>
-                    </div> */}
                     <NavLink to='/setup'>
                         <div className='Game__button'>
                             <Button shape='neutral'>Back to setup</Button>
