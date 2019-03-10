@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import Button from '../../ui-components/Button/Button';
 import { setConfig } from '../actions';
 import './Setup.scss';
@@ -13,7 +12,7 @@ const DEFAULT_PLAYER1_CHAR = 'x';
 const DEFAULT_PLAYER2_NAME = 'Player 2';
 const DEFAULT_PLAYER2_CHAR = 'o';
 
-class Setup extends Component {
+export class Setup extends Component {
     constructor(props) {
         super(props);
 
@@ -42,9 +41,9 @@ class Setup extends Component {
             return;
         }
 
-        const { setConfig } = this.props;
+        const { setConfig, history } = this.props;
         setConfig(this.state);
-        this.setState({ redirect: true });
+        history.push('/game')   ;
     }
 
     isStateValid(state) {
@@ -53,10 +52,6 @@ class Setup extends Component {
     }
 
     render() {
-        if (this.state.redirect) {
-            return <Redirect push to='/game' />;
-        }
-
         const { boardSize, tileToWin, pcChar, player1Name, player1Char, player2Name, player2Char } = this.state || {};
 
         return (
@@ -65,8 +60,8 @@ class Setup extends Component {
                 <div className='Setup__form'>
                     <div className='Setup__tile'>
                         <div className='Setup__tile__heading'>System</div>
-                        <div className='Setup__tile__field'>
-                            <label>Field size:</label>
+                        <div className='Setup__tile__field Setup__boardSize'>
+                            <label>Board size:</label>
                             <input
                                 type='number'
                                 min='3' max='10'
@@ -75,7 +70,7 @@ class Setup extends Component {
                                 onChange={this.handleFormChange}
                             />
                         </div>
-                        <div className='Setup__tile__field'>
+                        <div className='Setup__tile__field Setup__tileToWin'>
                             <label>Tile to win:</label>
                             <input
                                 type='number'
@@ -85,7 +80,7 @@ class Setup extends Component {
                                 onChange={this.handleFormChange}
                             />
                         </div>
-                        <div className='Setup__tile__field'>
+                        <div className='Setup__tile__field Setup__pcChar'>
                             <label>Character:</label>
                             <input
                                 type='text'
@@ -98,7 +93,7 @@ class Setup extends Component {
                     </div>
                     <div className='Setup__tile'>
                         <div className='Setup__tile__heading'>Player 1</div>
-                        <div className='Setup__tile__field'>
+                        <div className='Setup__tile__field Setup__player1Name'>
                             <label>Name:</label>
                             <input
                                 type='text'
@@ -107,7 +102,7 @@ class Setup extends Component {
                                 onChange={this.handleFormChange}
                             />
                         </div>
-                        <div className='Setup__tile__field'>
+                        <div className='Setup__tile__field Setup__player1Char'>
                             <label>Character:</label>
                             <input
                                 type='text'
@@ -120,7 +115,7 @@ class Setup extends Component {
                     </div>
                     <div className='Setup__tile'>
                         <div className='Setup__tile__heading'>Player 2</div>
-                        <div className='Setup__tile__field'>
+                        <div className='Setup__tile__field Setup__player2Name'>
                             <label>Name:</label>
                             <input
                                 type='text'
@@ -129,7 +124,7 @@ class Setup extends Component {
                                 onChange={this.handleFormChange}
                             />
                         </div>
-                        <div className='Setup__tile__field'>
+                        <div className='Setup__tile__field Setup__player2Char'>
                             <label>Character:</label>
                             <input
                                 type='text'
