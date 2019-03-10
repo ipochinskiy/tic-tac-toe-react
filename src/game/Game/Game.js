@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Button from '../../ui-components/Button/Button';
 import { calculatePCTurn, tileSelected } from '../actions';
 import Board from '../Board/Board';
@@ -9,10 +9,11 @@ import './Game.scss';
 
 const isBetween = (num, a, b) => num >= a && num <= b;
 
-class Game extends Component {
+export class Game extends Component {
     constructor(props) {
         super(props);
         this.tileClicked = this.tileClicked.bind(this);
+        this.navigateToSetup = this.navigateToSetup.bind(this);
     }
 
     componentDidMount() {
@@ -31,7 +32,7 @@ class Game extends Component {
 
     tileClicked(tileIndex) {
         const { tileList, tileSelected, gameState } = this.props;
-        if (gameState === GameState.Player1Won || gameState === GameState.Player2Won || gameState === GameState.PCWon) {
+        if (gameState === GameState.Player1Won || gameState === GameState.Player2Won || gameState === GameState.PCWon || gameState === GameState.Tie) {
             return;
         }
 
@@ -42,11 +43,16 @@ class Game extends Component {
         tileSelected(tileIndex);
     }
 
+    navigateToSetup() {
+        const { history } = this.props;
+        history.push('/setup');
+    }
+
     render() {
-        const { tileList, gameState, config, history } = this.props;
+        const { tileList, gameState, config } = this.props;
 
         if (!tileList || !gameState || !config) {
-            history.push('/setup');
+            this.navigateToSetup();
             return null;
         }
 
@@ -58,11 +64,9 @@ class Game extends Component {
                 <div className='Game__heading'>{label}</div>
                 <Board boardSize={boardSize} tileList={tileList} tileClicked={this.tileClicked}/>
                 <div className='Game__buttons'>
-                    <NavLink to='/setup'>
-                        <div className='Game__button'>
-                            <Button shape='neutral'>Back to setup</Button>
-                        </div>
-                    </NavLink>
+                    <div className='Game__button'>
+                        <Button shape='neutral' onClick={this.navigateToSetup}>Back to setup</Button>
+                    </div>
                 </div>
             </div>
         );
