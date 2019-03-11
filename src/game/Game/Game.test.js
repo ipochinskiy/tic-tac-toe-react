@@ -327,7 +327,7 @@ describe('Component: Game', () => {
             it('should navigate to the setup', () => {
                 const component = shallow(<Game {...props} />);
 
-                component.find('Button').simulate('click');
+                component.find('.Game__button').simulate('click');
 
                 expect(props.history.push).toHaveBeenCalledWith('/setup');
             });

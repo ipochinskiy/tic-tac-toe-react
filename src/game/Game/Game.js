@@ -64,8 +64,8 @@ export class Game extends Component {
                 <div className='Game__heading'>{label}</div>
                 <Board boardSize={boardSize} tileList={tileList} tileClicked={this.tileClicked}/>
                 <div className='Game__buttons'>
-                    <div className='Game__button'>
-                        <Button shape='neutral' onClick={this.navigateToSetup}>Back to setup</Button>
+                    <div className='Game__button' onClick={this.navigateToSetup}>
+                        <Button shape='neutral'>Back to setup</Button>
                     </div>
                 </div>
             </div>
