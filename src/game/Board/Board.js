@@ -79,7 +79,7 @@ class Board extends Component {
         const textWidth = ctx.measureText(tile.char).width;
         const offsetX = (tileSize - textWidth) / 2;
         const textPos = {
-            x: tile.x * tileSize + offsetX,
+            x: tile.x * tileSize + offsetX, // select the x-position based on the width of the rendered symbol
             y: (tile.y + 0.85) * tileSize,
         }
         ctx.fillText(tile.char, textPos.x, textPos.y);
